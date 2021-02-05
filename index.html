@@ -56,11 +56,13 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
+            <form 
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(event);"
+              novalidate
+              id="test"
             >
               <div
                 class="formData">
@@ -70,10 +72,9 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                  required
+                  value="aa"
                 />
-                <div id="first_error">                
+                <div class="field_error" id="first_error">                
                 </div>
                 <br>
               </div>
@@ -85,10 +86,9 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
-                  required
+                  value="aa"
                 />
-                <div id="last_error">                
+                <div class="field_error" id="last_error">                
                 </div>
                 <br>
               </div>
@@ -97,12 +97,12 @@
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
-                  required
+                  value="a@a.f"
                   />
-                  <div id="email_error">                
+                  <div class="field_error" id="email_error">                
                   </div>
                   <br>
               </div>
@@ -114,8 +114,8 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  />
-                  <div id="birthdate_error">                
+                  /> 
+                  <div class="field_error" id="birthdate_error">                
                   </div>
                   <br>
               </div>
@@ -130,8 +130,8 @@
                   min="0" 
                   max="99" 
                   value="0"
-                  required/>
-                <div id="quantity_error">                
+                  />
+                <div class="field_error" id="quantity_error">                
                 </div>
               </div>
               <p class="text-label">Quelles villes ?</p>
@@ -143,6 +143,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  checked
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -213,17 +214,23 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1">
+                <label class="checkbox2-label" for="checkbox1" id="checkbox1_label">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <div id="checkbox1_error">                
+                <div class="field_error" id="checkbox1_error">                
                 </div>
+
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+
+                <input 
+                  class="checkbox-input" 
+                  type="checkbox" 
+                  id="checkbox2" 
+                />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
@@ -240,7 +247,7 @@
     </main>
     <footer>
       <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
+        Copyright 2014 - 2021, GameOn Inc.
       </p>
     </footer>
     <script src="modal.js"></script>
