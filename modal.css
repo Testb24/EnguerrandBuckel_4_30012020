@@ -242,6 +242,17 @@ input[data-error]::after {
   color: #e54858;
   background-color: rgb(255, 224, 224);
 }
+.class_error_text {
+  /* border: 2px solid#e54858; */
+  color: #e54858;
+  background-color: rgb(255, 224, 224);
+  
+  border-radius: 4px;
+}
+.class_error_checkbox {
+  background-color: rgb(255, 224, 224);
+  border: 2px solid#e54858;
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
