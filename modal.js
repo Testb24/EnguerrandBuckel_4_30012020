@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -65,13 +65,15 @@ const email_error = document.getElementById("email_error");
 email.addEventListener('keyup', error_help_email);
 
 function error_help_email() {
-  var pattern = /.+@.+\..+/;
-  var adress = pattern.exec(email.value);
-  if (email.value == adress && email.value != "") {
+  let pattern = /[\w\.]+@[\w]+\.[\w]+/;
+  let adress = pattern.exec(email.value);
+  if (email.value == adress[0] && email.value != "") {
     email_error.innerHTML = "";
     email.classList.remove("class_error");
+    return true
   } else {
     email_error.innerHTML = "Veuillez entrer une adresse mail valide";
+    return false
   }
 };
 // Time ===========================================================
@@ -124,7 +126,7 @@ function error_help_checkbox1() {
 //ELse   => return form_valid = true
 
 function checkMyForm() {
-  var form_valid = true;
+  let form_valid = true;
 
   //Check if firstname ok
   if (first.value.length < 2) { first.classList.add("class_error"); form_valid = false; };
@@ -133,9 +135,7 @@ function checkMyForm() {
   if (last.value.length < 2) { last.classList.add("class_error"); form_valid = false; };
 
   //Check if email ok
-  var pattern = /.+@.+\..+/;
-  var adress = pattern.exec(email.value);
-  if (email.value != adress || email.value == "") { email.classList.add("class_error"); form_valid = false; };
+  if ( !error_help_email() ) { email.classList.add("class_error"); form_valid = false; };
 
   //Check if birthdate valid
   if ((isNaN(new Date(birthdate.value).getTime()) ||
@@ -167,7 +167,7 @@ function validate(e) {
 
   if (checkMyForm()) {
     document.getElementById("test").innerHTML = `
-  Merci `+ first.value +` !
+  Merci `+ first.value + ` !
   <br>
   Votre participation a bien été enregistrée.
 `;
